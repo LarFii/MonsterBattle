@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/Workspace/Object_Oriented_Design/SpiritBattle/main/MonsterBase.cpp
+MonsterBase.h
+E:/Workspace/Object_Oriented_Design/SpiritBattle/main/MonsterBase.h
+
+E:/Workspace/Object_Oriented_Design/SpiritBattle/main/MonsterBase.h
+cmath
+-
+string
+-
+cstdlib
+-
+iostream
+-
+

@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/Workspace/Object_Oriented_Design/SpiritBattle/main/SpiritBase.cpp
+SpiritBase.h
+E:/Workspace/Object_Oriented_Design/SpiritBattle/main/SpiritBase.h
+
+E:/Workspace/Object_Oriented_Design/SpiritBattle/main/SpiritBase.h
+string
+-
+cstdlib
+-
+iostream
+-
+
