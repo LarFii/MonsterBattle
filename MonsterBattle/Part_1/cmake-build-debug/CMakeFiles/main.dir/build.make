@@ -62,10 +62,10 @@ RM = "D:\Program Files\JetBrains\CLion 2020.1.3\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\Workspace\Object_Oriented_Design\SpiritBattle\main
+CMAKE_SOURCE_DIR = E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\Workspace\Object_Oriented_Design\SpiritBattle\main\cmake-build-debug
+CMAKE_BINARY_DIR = E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/main.dir/depend.make
@@ -78,45 +78,60 @@ include CMakeFiles/main.dir/flags.make
 
 CMakeFiles/main.dir/main.cpp.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\Workspace\Object_Oriented_Design\SpiritBattle\main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/main.cpp.obj"
-	D:\MingGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\main.dir\main.cpp.obj -c E:\Workspace\Object_Oriented_Design\SpiritBattle\main\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/main.cpp.obj"
+	D:\MingGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\main.dir\main.cpp.obj -c E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\main.cpp
 
 CMakeFiles/main.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/main.cpp.i"
-	D:\MingGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\Workspace\Object_Oriented_Design\SpiritBattle\main\main.cpp > CMakeFiles\main.dir\main.cpp.i
+	D:\MingGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\main.cpp > CMakeFiles\main.dir\main.cpp.i
 
 CMakeFiles/main.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
-	D:\MingGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\Workspace\Object_Oriented_Design\SpiritBattle\main\main.cpp -o CMakeFiles\main.dir\main.cpp.s
+	D:\MingGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\main.cpp -o CMakeFiles\main.dir\main.cpp.s
 
 CMakeFiles/main.dir/MonsterBase.cpp.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/MonsterBase.cpp.obj: ../MonsterBase.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\Workspace\Object_Oriented_Design\SpiritBattle\main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/MonsterBase.cpp.obj"
-	D:\MingGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\main.dir\MonsterBase.cpp.obj -c E:\Workspace\Object_Oriented_Design\SpiritBattle\main\MonsterBase.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/MonsterBase.cpp.obj"
+	D:\MingGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\main.dir\MonsterBase.cpp.obj -c E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\MonsterBase.cpp
 
 CMakeFiles/main.dir/MonsterBase.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/MonsterBase.cpp.i"
-	D:\MingGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\Workspace\Object_Oriented_Design\SpiritBattle\main\MonsterBase.cpp > CMakeFiles\main.dir\MonsterBase.cpp.i
+	D:\MingGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\MonsterBase.cpp > CMakeFiles\main.dir\MonsterBase.cpp.i
 
 CMakeFiles/main.dir/MonsterBase.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/MonsterBase.cpp.s"
-	D:\MingGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\Workspace\Object_Oriented_Design\SpiritBattle\main\MonsterBase.cpp -o CMakeFiles\main.dir\MonsterBase.cpp.s
+	D:\MingGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\MonsterBase.cpp -o CMakeFiles\main.dir\MonsterBase.cpp.s
+
+CMakeFiles/main.dir/BattleController.cpp.obj: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/BattleController.cpp.obj: ../BattleController.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/BattleController.cpp.obj"
+	D:\MingGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\main.dir\BattleController.cpp.obj -c E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\BattleController.cpp
+
+CMakeFiles/main.dir/BattleController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/BattleController.cpp.i"
+	D:\MingGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\BattleController.cpp > CMakeFiles\main.dir\BattleController.cpp.i
+
+CMakeFiles/main.dir/BattleController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/BattleController.cpp.s"
+	D:\MingGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\BattleController.cpp -o CMakeFiles\main.dir\BattleController.cpp.s
 
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/main.cpp.obj" \
-"CMakeFiles/main.dir/MonsterBase.cpp.obj"
+"CMakeFiles/main.dir/MonsterBase.cpp.obj" \
+"CMakeFiles/main.dir/BattleController.cpp.obj"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 main.exe: CMakeFiles/main.dir/main.cpp.obj
 main.exe: CMakeFiles/main.dir/MonsterBase.cpp.obj
+main.exe: CMakeFiles/main.dir/BattleController.cpp.obj
 main.exe: CMakeFiles/main.dir/build.make
 main.exe: CMakeFiles/main.dir/linklibs.rsp
 main.exe: CMakeFiles/main.dir/objects1.rsp
 main.exe: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=E:\Workspace\Object_Oriented_Design\SpiritBattle\main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable main.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable main.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\main.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -129,6 +144,6 @@ CMakeFiles/main.dir/clean:
 .PHONY : CMakeFiles/main.dir/clean
 
 CMakeFiles/main.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" E:\Workspace\Object_Oriented_Design\SpiritBattle\main E:\Workspace\Object_Oriented_Design\SpiritBattle\main E:\Workspace\Object_Oriented_Design\SpiritBattle\main\cmake-build-debug E:\Workspace\Object_Oriented_Design\SpiritBattle\main\cmake-build-debug E:\Workspace\Object_Oriented_Design\SpiritBattle\main\cmake-build-debug\CMakeFiles\main.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1 E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1 E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\cmake-build-debug E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\cmake-build-debug E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\cmake-build-debug\CMakeFiles\main.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/main.dir/depend
 

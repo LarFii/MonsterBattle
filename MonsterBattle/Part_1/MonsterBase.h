@@ -9,6 +9,7 @@
     #pragma execution_character_set("utf-8")
 #endif
 
+#include <ctime>
 #include <cmath>
 #include <string>
 #include <cstdlib>
@@ -22,11 +23,11 @@ using namespace std;
         return m_##_property_; } \
 
 #define SET(_type_, _property_) \
-    inline void set_##_property_(const _type_& var) { \
+    inline void set_##_property_(const _type_ &var) { \
         m_##_property_ = var; } \
 
 #define UPDATE(_property_) \
-    inline void update_##_property_(int amt) { \
+    inline void update_##_property_(const int &amt) { \
         m_##_property_ += amt; } \
 
 #define PROPERTY(_type_, _property_name_) \
@@ -34,7 +35,7 @@ using namespace std;
     SET(_type_, _property_name_) \
     UPDATE(_property_name_) \
 
-#define random(n) rand() % n
+#define random(n) rand() % (n)
 
 #define FUNCTION
 #define RESOURCE
@@ -65,8 +66,6 @@ public FUNCTION:
     PROPERTY(int, Speed);
     PROPERTY(int, Attack);
     PROPERTY(int, Defense);
-    PROPERTY(int, Potential);
-
 
 public FUNCTION:
     // get
@@ -107,8 +106,6 @@ protected RESOURCE:
         m_Attack;            // 基础攻击力
     int
         m_Defense;           // 基础防御力
-    int
-        m_Potential;         // 潜力值
     string
         m_Skills[4][2];      // 一个普通攻击三个特殊技能 第一行是技能名 第二行是技能效果
     int
@@ -145,6 +142,7 @@ public FUNCTION:
     // get set update 三合一
     PROPERTY(int, Exp);
     PROPERTY(int, Level);
+    PROPERTY(int, Potential);
     PROPERTY(int, Init_HP);
     PROPERTY(int, Init_Speed);
     PROPERTY(int, Init_Attack);
@@ -204,6 +202,12 @@ public FUNCTION:
     void
         changeDefense(int count);   // 战斗中精灵防御力变化
 
+    // print
+    void
+        printINFO() const;                // 打印基本信息
+    void
+        pNeedExp() const;                 // 打印升级所需经验
+
     Monster
         &operator=(const Monster &) = delete;
 
@@ -216,6 +220,8 @@ private RESOURCE:
         m_Exp;              // 经验
     int
         m_Level;            // 等级
+    int
+        m_Potential;         // 潜力值
     int
         m_Init_HP;          // 初始生命值
     int

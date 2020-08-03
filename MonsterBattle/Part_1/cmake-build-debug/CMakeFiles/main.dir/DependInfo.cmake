@@ -4,8 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "E:/Workspace/Object_Oriented_Design/SpiritBattle/main/MonsterBase.cpp" "E:/Workspace/Object_Oriented_Design/SpiritBattle/main/cmake-build-debug/CMakeFiles/main.dir/MonsterBase.cpp.obj"
-  "E:/Workspace/Object_Oriented_Design/SpiritBattle/main/main.cpp" "E:/Workspace/Object_Oriented_Design/SpiritBattle/main/cmake-build-debug/CMakeFiles/main.dir/main.cpp.obj"
+  "E:/Workspace/Object_Oriented_Design/SpiritBattle/MonsterBattle/Part_1/BattleController.cpp" "E:/Workspace/Object_Oriented_Design/SpiritBattle/MonsterBattle/Part_1/cmake-build-debug/CMakeFiles/main.dir/BattleController.cpp.obj"
+  "E:/Workspace/Object_Oriented_Design/SpiritBattle/MonsterBattle/Part_1/MonsterBase.cpp" "E:/Workspace/Object_Oriented_Design/SpiritBattle/MonsterBattle/Part_1/cmake-build-debug/CMakeFiles/main.dir/MonsterBase.cpp.obj"
+  "E:/Workspace/Object_Oriented_Design/SpiritBattle/MonsterBattle/Part_1/main.cpp" "E:/Workspace/Object_Oriented_Design/SpiritBattle/MonsterBattle/Part_1/cmake-build-debug/CMakeFiles/main.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -6,11 +6,17 @@
 
 #IncludeRegexTransform: 
 
-E:/Workspace/Object_Oriented_Design/SpiritBattle/main/MonsterBase.cpp
+E:/Workspace/Object_Oriented_Design/SpiritBattle/MonsterBattle/Part_1/BattleController.h
 MonsterBase.h
-E:/Workspace/Object_Oriented_Design/SpiritBattle/main/MonsterBase.h
+E:/Workspace/Object_Oriented_Design/SpiritBattle/MonsterBattle/Part_1/MonsterBase.h
 
-E:/Workspace/Object_Oriented_Design/SpiritBattle/main/MonsterBase.h
+E:/Workspace/Object_Oriented_Design/SpiritBattle/MonsterBattle/Part_1/MonsterBase.cpp
+MonsterBase.h
+E:/Workspace/Object_Oriented_Design/SpiritBattle/MonsterBattle/Part_1/MonsterBase.h
+
+E:/Workspace/Object_Oriented_Design/SpiritBattle/MonsterBattle/Part_1/MonsterBase.h
+ctime
+-
 cmath
 -
 string
@@ -19,4 +25,8 @@ cstdlib
 -
 iostream
 -
+
+E:/Workspace/Object_Oriented_Design/SpiritBattle/MonsterBattle/Part_1/main.cpp
+BattleController.h
+E:/Workspace/Object_Oriented_Design/SpiritBattle/MonsterBattle/Part_1/BattleController.h
 

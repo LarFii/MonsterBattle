@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/main.dir/BattleController.cpp.obj"
   "CMakeFiles/main.dir/MonsterBase.cpp.obj"
   "CMakeFiles/main.dir/main.cpp.obj"
   "libmain.dll.a"

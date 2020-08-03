@@ -67,10 +67,10 @@ RM = "D:\Program Files\JetBrains\CLion 2020.1.3\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\Workspace\Object_Oriented_Design\SpiritBattle\main
+CMAKE_SOURCE_DIR = E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\Workspace\Object_Oriented_Design\SpiritBattle\main\cmake-build-debug
+CMAKE_BINARY_DIR = E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\Workspace\Object_Oriented_Design\SpiritBattle\main\cmake-build-debug\CMakeFiles E:\Workspace\Object_Oriented_Design\SpiritBattle\main\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\cmake-build-debug\CMakeFiles E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\Workspace\Object_Oriented_Design\SpiritBattle\main\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\Workspace\Object_Oriented_Design\SpiritBattle\MonsterBattle\Part_1\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -141,6 +141,33 @@ main: cmake_check_build_system
 main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
+
+BattleController.obj: BattleController.cpp.obj
+
+.PHONY : BattleController.obj
+
+# target to build an object file
+BattleController.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/BattleController.cpp.obj
+.PHONY : BattleController.cpp.obj
+
+BattleController.i: BattleController.cpp.i
+
+.PHONY : BattleController.i
+
+# target to preprocess a source file
+BattleController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/BattleController.cpp.i
+.PHONY : BattleController.cpp.i
+
+BattleController.s: BattleController.cpp.s
+
+.PHONY : BattleController.s
+
+# target to generate assembly for a file
+BattleController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/BattleController.cpp.s
+.PHONY : BattleController.cpp.s
 
 MonsterBase.obj: MonsterBase.cpp.obj
 
@@ -205,6 +232,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... main
+	@echo ... BattleController.obj
+	@echo ... BattleController.i
+	@echo ... BattleController.s
 	@echo ... MonsterBase.obj
 	@echo ... MonsterBase.i
 	@echo ... MonsterBase.s

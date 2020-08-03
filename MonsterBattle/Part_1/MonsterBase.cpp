@@ -28,7 +28,6 @@ const MonsterBase *Monster::s_Races[8] = {
 };
 
 MonsterBase::MonsterBase(MonsterType type) {
-    int amt;        // 不同类型的额外加成
 
     // 初始化各种属性
     set_Race(type);
@@ -36,25 +35,19 @@ MonsterBase::MonsterBase(MonsterType type) {
     set_Speed(InitSpeed);
     set_Attack(InitAttack);
     set_Defense(InitDefense);
-    set_Potential(random(RandPotential));
 
-    // get_Potential() 潜力值加成
     switch (type) {
         case HHP:
-            amt = InitHP + get_Potential();
-            update_HP(amt);
+            update_HP(InitHP);
             break;
         case SPE:
-            amt = InitSpeed + get_Potential();
-            update_Speed(amt);
+            update_Speed(InitSpeed);
             break;
         case ATK:
-            amt = InitAttack + get_Potential();
-            update_Attack(amt);
+            update_Attack(InitAttack);
             break;
         case DEF:
-            amt = InitDefense + get_Potential();
-            update_Defense(amt);
+            update_Defense(InitDefense);
             break;
         default:
             break;
@@ -121,6 +114,16 @@ Monster::Monster(int RaceIndex, const string& NickName) {
     set_Exp(InitExp);
     set_Level(InitLevel);
     set_RaceIndex(RaceIndex);
+    set_Potential(random(RandPotential));
+
+    set_Init_HP(s_Races[m_RaceIndex]->get_HP() + \
+                    get_Potential());
+    set_Init_Speed(s_Races[m_RaceIndex]->get_Speed() + \
+                       get_Potential());
+    set_Init_Attack(s_Races[m_RaceIndex]->get_Attack() + \
+                        get_Potential());
+    set_Init_Defense(s_Races[m_RaceIndex]->get_Defense() + \
+                         get_Potential());
 
     if (!NickName.length())
         m_NickName = s_Races[m_RaceIndex]->get_Name();      // 昵称默认为种族名
@@ -130,6 +133,8 @@ Monster::Monster(int RaceIndex, const string& NickName) {
     for (int i = 0; i < 3; ++i) {
         setBattlePP(i);
     }
+
+    printINFO();
 }
 
 Monster::Monster(
@@ -212,22 +217,23 @@ bool
             Level_Up = true;
             update_Level(LevelUp);
 
+            amt_HP = LevelUpHp;
+            amt_Speed = LevelUpSpeed;
+            amt_Attack = LevelUpAttack;
+            amt_Defense = LevelUpDefense;
+
             switch (s_Races[m_RaceIndex]->get_Race()) {
                 case HHP:
-                    amt_HP = LevelUpHp + \
-                        s_Races[m_RaceIndex]->get_Potential();
+                    amt_HP += LevelUpHp + get_Potential();
                     break;
                 case SPE:
-                    amt_Speed = LevelUpSpeed + \
-                        s_Races[m_RaceIndex]->get_Potential();
+                    amt_Speed += LevelUpSpeed + get_Potential();
                     break;
                 case ATK:
-                    amt_Attack = LevelUpAttack + \
-                        s_Races[m_RaceIndex]->get_Potential();
+                    amt_Attack += LevelUpAttack + get_Potential();
                     break;
                 case DEF:
-                    amt_Defense = LevelUpDefense + \
-                        s_Races[m_RaceIndex]->get_Potential();
+                    amt_Defense += LevelUpDefense + get_Potential();
                     break;
                 default:
                     break;
@@ -249,7 +255,7 @@ bool
         int SkillIndex = 0;
 
         if (autoBattle) {
-            bool usable[3];
+            bool usable[3] = { false };
             int usableCount = 1;
 
             for (int i = 0; i < 3; ++i) {
@@ -278,10 +284,15 @@ bool
 
             if (SkillIndex > 0) changePP(SkillIndex - 1);
 
+            cout << get_NickName() <<" 使用技能 ";
+            cout << getSkillName(SkillIndex) << endl;
+            if (SkillIndex > 0)
+                cout << "技能剩余次数：" << getBattlePP(SkillIndex - 1) << endl;
             return s_Races[m_RaceIndex]->attack(
                     *this, aim, SkillIndex);
         }
 
+        cout << "轮到" << get_NickName() << "行动" << endl;
         cout << "请输入你需要释放的技能编号：";
         cin >> SkillIndex;
 
@@ -289,11 +300,20 @@ bool
 
         if (SkillIndex < 0 || SkillIndex > 3) SkillIndex = 0;
 
-        if (SkillIndex * 5 <= m_Level && m_Battle_pp[SkillIndex - 1]) {
+        if (SkillIndex * 5 <= m_Level && m_Battle_pp[SkillIndex - 1] && \
+                SkillIndex != 0) {
             changePP(SkillIndex - 1);
+
+            cout << get_NickName() <<" 使用技能 ";
+            cout << getSkillName(SkillIndex) << endl;
+            cout << "技能剩余次数：" << getBattlePP(SkillIndex - 1) << endl;
+
             return s_Races[m_RaceIndex]->attack(
                     *this, aim, SkillIndex);
         }
+
+        cout << get_NickName() <<" 使用技能 ";
+        cout << getSkillName(SkillIndex) << endl;
 
         return s_Races[m_RaceIndex]->attack(
                 *this, aim, 0);
@@ -302,8 +322,11 @@ bool
 bool
     Monster::takeDamage(int n) {
         if (n < 1) n = 1;
+
+        cout << "造成" << n << "点伤害" << endl;
+
         return changeHP(-n);
-}
+    }
 
 void
     Monster::changePP(int index) {
@@ -311,12 +334,15 @@ void
     }
 
 bool
-    Monster::    changeHP(int count) {
+    Monster::changeHP(int count) {
         update_Battle_HP(count);
 
         if (m_Battle_HP > m_Init_HP) set_Battle_HP(m_Init_HP);
 
         if (m_Battle_HP < 0) set_Battle_HP(0);
+
+        cout << get_NickName() << "剩余生命值为：";
+        cout << get_Battle_HP() << endl;
 
         if (!m_Battle_HP) return true;
 
@@ -329,6 +355,7 @@ void
 
         if (m_Battle_Speed < 1) set_Battle_Speed(1);
 
+        cout << get_NickName() << "的速度变为：" << get_Battle_Speed() << endl;
     }
 
 void
@@ -337,6 +364,8 @@ void
 
         if (m_Battle_Attack < 1) set_Battle_Attack(1);
 
+        cout << get_NickName() << "的攻击力变为：";
+        cout << get_Battle_Attack() << endl;
     }
 
 void
@@ -345,6 +374,48 @@ void
 
         if (m_Battle_Defense < 1) set_Battle_Defense(1);
 
+        cout << get_NickName() << "的防御力变为：";
+        cout << get_Battle_Defense() << endl;
+    }
+
+void
+    Monster::printINFO() const {
+        cout << "宠物昵称：" << get_NickName();
+        cout << " 类型：" << getRaceType() << endl;
+        cout << "等级：" << get_Level() << " 经验：" << get_Exp() << endl;
+        cout << "生命值：" << get_Init_HP() << endl;
+        cout << "攻击力：" << get_Init_Attack() << endl;
+        cout << "防御力：" << get_Init_Defense() << endl;
+        cout << "速度：" << get_Init_Speed() << endl;
+        cout << "潜力值：" << get_Potential() << endl;
+        cout << "技能1：" << getSkillName(0);
+        cout << " 使用次数：∞";
+        cout << " 效果：" << getSkillDetail(0) << endl;
+        cout << "技能2：" << getSkillName(1);
+        cout << " 使用次数：" << getPP(0);
+        cout << " 效果：" << getSkillDetail(1);
+        cout << " 解锁等级：5级" << endl;
+        cout << "技能3：" << getSkillName(2);
+        cout << " 使用次数：" << getPP(1);
+        cout << " 效果：" << getSkillDetail(2);
+        cout << " 解锁等级：10级" << endl;
+        cout << "技能4：" << getSkillName(3);
+        cout << " 使用次数：" << getPP(2);
+        cout << " 效果：" << getSkillDetail(3);
+        cout << " 解锁等级：15级" << endl;
+    }
+
+void
+    Monster::pNeedExp() const {
+        if (get_Level() < 15) {
+            int NeedExp;
+
+            NeedExp = s_Races[m_RaceIndex]-> \
+                    getUpCurve(get_Level() + 1) - get_Exp();
+
+            cout << "距离下一级级还需" << NeedExp << "点经验" << endl;
+        } else
+            cout << "已满级！" << endl;
     }
 
 template <>
@@ -389,7 +460,7 @@ bool
 
                 return aim.takeDamage(dmg);
             case 2:
-                aim.changeDefense(-attacker.get_Level());
+                aim.changeAttack(-attacker.get_Level());
 
                 return false;
             case 3:
@@ -433,7 +504,7 @@ Race<1>::Race() : MonsterBase(SPE) {
     Dscp_3 = "自身速度提高50%";
     setSkillDetail(Dscp_3, 3);
 
-    setPP(5, 0);
+    setPP(3, 0);
     setPP(3, 1);
     setPP(1, 2);
 }
@@ -450,10 +521,14 @@ bool
 
                 return aim.takeDamage(dmg);
             case 2:
-                aim.changeSpeed(-attacker.get_Battle_Speed());
+                aim.changeSpeed(-attacker.get_Level());
 
                 break;
             case 3:
+                attacker.changeSpeed(
+                        (int)floor(attacker.get_Battle_Speed() * 0.5)
+                        );
+                break;
             default:
                 dmg += attacker.get_Battle_Attack() - \
                         aim.get_Battle_Defense();
@@ -587,10 +662,12 @@ bool
                 if (aim.get_Battle_Defense() > aim.get_Init_Defense());
                     aim.set_Battle_Defense(aim.get_Battle_Defense());
 
+                cout << "敌方的一切增益效果消除了！" << endl;
+
                 break;
             case 2:
-                attacker.set_Battle_Defense(
-                    (int)floor(attacker.get_Battle_Defense() * 1.3)
+                attacker.changeDefense(
+                    (int)floor(attacker.get_Battle_Defense() * 0.3)
                     );
 
                 break;
@@ -625,7 +702,7 @@ Race<4>::Race() : MonsterBase(HHP) {
     Skill_3 = "天地同变";
     setSkillName(Skill_3, 3);
 
-    Dscp_0 = "进行一次打击，造成攻击力*1的伤害";
+    Dscp_0 = "进行一次打击，造成自身等级*1的固定真实伤害, 最少10点";
     setSkillDetail(Dscp_0, 0);
     Dscp_1 = "恢复自身等级*3的生命值";
     setSkillDetail(Dscp_1, 1);
@@ -642,7 +719,8 @@ Race<4>::Race() : MonsterBase(HHP) {
 template <>
 bool
     Race<4>::attack(Monster &attacker, Monster &aim, int SkillIndex) const {
-        int dmg, dmgSelf = randDmg(3);
+        int dmg     = randDmg(3);
+        int dmgSelf = randDmg(3);
 
         switch (SkillIndex) {
             case 1:
@@ -656,6 +734,9 @@ bool
                                 attacker.get_Battle_Defense();
                 if (dmgSelf > attacker.get_Battle_HP())
                     --dmgSelf;
+
+                cout << "对自身";
+
                 attacker.takeDamage(dmgSelf);
 
                 return aim.takeDamage(dmg);
@@ -664,8 +745,10 @@ bool
 
                 return aim.takeDamage(dmg);
             default:
-                dmg += attacker.get_Battle_Attack() - \
-                            aim.get_Battle_Defense();
+                if (attacker.get_Level() < 10)
+                    dmg = 10;
+                else
+                    dmg = attacker.get_Level();
 
                 return aim.takeDamage(dmg);
         }
@@ -695,11 +778,11 @@ Race<5>::Race() : MonsterBase(SPE) {
     setSkillDetail(Dscp_1, 1);
     Dscp_2 = "造成自身速度*1.2的伤害";
     setSkillDetail(Dscp_2, 2);
-    Dscp_3 = "自身速度翻倍";
+    Dscp_3 = "自身速度提高40%";
     setSkillDetail(Dscp_3, 3);
 
-    setPP(10, 0);
-    setPP(4, 1);
+    setPP(3, 0);
+    setPP(3, 1);
     setPP(1, 2);
 }
 
@@ -710,7 +793,7 @@ bool
 
         switch (SkillIndex) {
             case 1:
-                aim.set_Battle_Speed(attacker.get_Level());
+                aim.changeSpeed(-attacker.get_Level());
 
                 break;
             case 2:
@@ -719,7 +802,9 @@ bool
 
                 return aim.takeDamage(dmg);
             case 3:
-                attacker.changeSpeed(attacker.get_Battle_Speed());
+                attacker.changeSpeed(
+                        (int)floor(attacker.get_Battle_Speed() * 0.4)
+                        );
 
                 break;
             default:
