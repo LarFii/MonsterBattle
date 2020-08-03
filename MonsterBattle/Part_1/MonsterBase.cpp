@@ -137,25 +137,6 @@ Monster::Monster(int RaceIndex, const string& NickName) {
     printINFO();
 }
 
-Monster::Monster(
-        int Exp,
-        int Level,
-        int HP,
-        int Speed,
-        int Attack,
-        int Defense,
-        int RaceIndex,
-        const string& Nickname
-) {
-    set_Exp(Exp);
-    set_Level(Level);
-    set_Init_HP(HP);
-    set_Init_Speed(Speed);
-    set_Init_Attack(Attack);
-    set_Init_Defense(Defense);
-    set_RaceIndex(RaceIndex);
-}
-
 void
     Monster::setBattlePP(int index) {
         if (index >= 0 && index <= 2)

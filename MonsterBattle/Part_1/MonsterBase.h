@@ -119,16 +119,6 @@ protected RESOURCE:
 class Monster {
 public:
     Monster(int RaceIndex, const string &NickName);
-    Monster(
-            int Exp,
-            int Level,
-            int HP,
-            int Speed,
-            int Attack,
-            int Defense,
-            int RaceIndex,
-            const string& Nickname
-    );
     Monster(const Monster &) = delete;
     ~Monster() {};
 
